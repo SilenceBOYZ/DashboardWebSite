@@ -1,0 +1,131 @@
+.special-foods {
+  margin-top: -10rem;
+  margin-bottom: 10rem;
+  position: relative;
+  border: none;
+  @include respond(mac-book) {
+    margin-top: -18rem;
+    margin-bottom: 6rem;
+  }
+
+  // ------- Phần Banner food ------- //
+  &__banner {
+    position: absolute;
+    width: 30rem;
+    z-index: -1;
+    @include respond(medium-desktop) {
+      width: 15%;
+    }
+    &-img {
+      width: 100%;
+      height: 100%;
+      &--left {
+        animation: flying 4s infinite;
+      }
+
+      &--right {
+        animation: flyingDown 4s infinite;
+      }
+    }
+
+    &--left {
+      bottom: 0;
+      transform: translate(-50%, 10%);
+      @include respond(tab-land){
+        display: none;
+      }
+    }
+
+    &--right {
+      right: 0;
+      top: 0;
+      transform: translate(30%, -10%);
+      @include respond(tab-land){
+        display: none;
+      }
+      @include respond(mac-book) {
+        transform: translate(50%, -10%);
+      }
+    }
+  }
+  // ------- Phần title ------- //
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    user-select: none;
+  
+  }
+
+  &__icons {
+    @include respond(phone) {
+      display: none;
+    }
+  }
+
+  &__icon-svg {
+    width: 5rem;
+    height: 5rem;
+
+    @include respond(tab-port) {
+      width: 4.5rem;
+      height: 4.5rem;
+    }
+
+    &-left:not(:last-child),
+    &-right:not(:last-child) {
+      margin-right: -1.2rem;
+    }
+
+
+    &-left {
+      @include respond(phoneMediumsize) {
+        &--3, &--4 {
+          display: none;
+        }
+      }
+    }
+
+    &-right {
+      @include respond(phoneMediumsize) {
+        grid-column: 1 / 2;
+      }
+      @include respond(phoneMediumsize) {
+        &--3, &--4 {
+          display: none;
+        }
+      }
+    }
+
+    &-left:nth-child(even),
+    &-right:nth-child(even) {
+      transform: translateY(0.8rem);
+    }
+  }
+
+  &__heading {
+    font-size: 6.4rem;
+    color: $color-primary-light-1;
+    @include respond(tab-port) {
+      font-size: 4.4rem;
+    }
+    @include respond(phone) {
+      font-size: 5.2rem;
+    }
+    
+    @include respond(phoneUnder5xx) {
+      font-size: 4.2rem;
+    }
+
+    @include respond(phoneSmallSize) {
+      width: 100%;
+      text-align: center;
+      font-size: 4.4rem;
+    }
+  }
+
+  &__btn {
+  }
+}

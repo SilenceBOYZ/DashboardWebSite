@@ -1,0 +1,137 @@
+.customer-review {
+  width: 100%;
+  background-color: $color-primary-light-3;
+  height: auto;
+  color: $color-text-light;
+
+&__wrapper{
+  padding: 4.4rem;
+  @include respond(phoneUnder5xx) {
+    padding: 2.4rem 2.4rem 3.2rem 2.4rem;
+    box-sizing: content-box;
+  }
+}
+&__boxTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3rem;
+  margin-bottom: 3rem;
+}
+&__bannerImg{
+  width: 12rem;
+  @include respond(phoneMediumsize) {
+    display: none;
+  }
+  &--left {
+    transform: rotate(-20deg);
+  }
+  &--right {
+    transform: rotate(20deg);
+  }
+}
+&__bnImage{
+  width: 100%;
+}
+&__title{
+  display: inline-block;
+  margin: 0 5rem;
+  @include respond(tab-port) {
+    font-size: 4.8rem;
+  }
+  @include respond(phone) {
+    margin: 0 1rem;
+  }
+  @include respond(phoneSmallSize) {
+    text-align: center;
+    font-size: 4.8rem;
+  }
+  @include respond(phoneUnder5xx) {
+    font-size: 4.2rem;
+  }
+}
+&__container{
+  display: flex;
+  gap: 3.2rem;
+  justify-content: center;
+  @include respond(phoneUnder5xx) {
+    padding: 1.4rem 2.4rem;
+  }
+}
+&__description{
+  width: 28rem;
+  height: 28rem;
+  background-color: #fff;
+  border-radius: 1.8rem;
+  color: $color-primary-light-3;
+  padding-top: 2rem;
+  padding-left: 2.5rem;
+  box-sizing: border-box;
+  box-shadow: 1rem 1rem 0rem $shadow-boxReview;
+  
+  @include respond(tab-port) {
+    &--4{
+      display: none;
+    }
+  }
+
+  @include respond(phoneMediumsize) {
+    &--3{
+      display: none;
+    }
+  }
+
+  @include respond(phone) {
+    &:not(:first-child){
+      display: none;
+    }
+  }
+}
+&__iconBox {
+  display: flex;
+  margin-bottom: 0.8rem;
+}
+&__icon {
+  height: 3rem;
+  filter: invert(50%) sepia(21%) saturate(4541%) hue-rotate(321deg) brightness(103%) contrast(104%);
+}
+&__comment {
+  font-size: 1.8rem;
+  height: 15rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  font-family: $font-family-secondary;
+  line-height: 1.5;
+  color: $color-text-dark-2;
+  @include respond(phoneUnder5xx) {
+    @supports (line-height: 1.8) {
+      line-height: 1.8;
+      font-family: $font-family;
+    }
+  }
+}
+&__customer{
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+&__image {
+  width: 4rem;
+  height: 4rem;
+  display: inline-block;
+  border-radius: 50%;
+  border: 2px solid $color-primary-light-3;
+  float: left;
+}
+&__name {
+  display: block;
+  box-sizing: content-box;
+  float: left;
+  padding: 1rem;
+  // margin-top: 0.8rem;
+  // margin-left: 1rem;
+  font-size: 1.6rem;
+}
+}

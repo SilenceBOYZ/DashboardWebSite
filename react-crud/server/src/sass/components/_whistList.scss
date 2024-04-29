@@ -1,0 +1,131 @@
+.whistlist {
+  padding: 0rem 2rem;
+  padding-top: 10rem;
+  @include respond(phoneSmallSize) {
+    padding: 0rem 1rem;
+    padding-top: 5rem;
+  }
+  &__wrapper {
+    font-family: $font-family-secondary;
+  }
+  // &__form {
+  // }
+  &__list {
+    width: 100%;
+    border-collapse: collapse;
+    @include respond(phoneMediumsize) {
+      flex: 1 1 100%;
+      overflow: auto;
+    }
+  }
+  &__heading {
+    background-color: $color-text-dark;
+    border-radius: 10px;
+  }
+
+  &__body {
+    & tr {
+      border: 1px solid $color-text-light-1;
+      position: relative;
+    }
+
+    & td {
+      padding: 1.5rem;
+      font-size: 1.8rem;
+      &:last-child {
+        text-align: right;
+      }
+      @include respond(phoneMediumsize) {
+        display: grid;
+        grid-template-columns: 15ch auto;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        &:last-child {
+          text-align: left;
+        }
+        &::before {
+          content: attr(data-cell);
+          text-transform: capitalize;
+          font-weight: 700;
+        }
+
+        &[role="button-addToCart"] {
+          & a {
+            text-align: center;
+          }
+        }
+
+        &[role="button-remove"] {
+          position: relative;
+          @supports (position: absolute) {
+            position: absolute;
+          }
+          top: 0;
+          right: 0;
+        }
+      }
+
+      @include respond(phoneSmallSize) {
+        &[role="button-remove"] {
+          @supports (position: absolute) {
+            position: absolute;
+          }
+          top: -1.2rem;
+          right: -1.2rem;
+        }
+      }
+    }
+  }
+
+  &__title {
+    padding: 1.5rem;
+    font-size: 1.8rem;
+    text-align: left;
+    color: $color-text-light;
+    font-family: $font-family-secondary;
+    &:last-child {
+      text-align: right;
+    }
+    @include respond(phoneMediumsize) {
+      display: none;
+    }
+  }
+
+  &__imageBox {
+    width: 10rem;
+    height: 10rem;
+    overflow: hidden;
+    border-radius: 50%;
+    @include respond(phoneMediumsize) {
+      width: 15rem;
+      height: 15rem;
+    }
+  }
+  &__image {
+    width: 100%;
+  }
+  // &__foodName {
+  // }
+  &__price {
+    font-weight: 500;
+  }
+  &__cta {
+    border: none;
+    padding: 1.5rem 1.5rem 1.3rem 1.5rem;
+    background-color: $color-tertiary-dark-1;
+    border-radius: 8px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+
+    & img {
+      width: 1.5rem;
+      height: 1.5rem;
+      filter: $icon-color-white;
+    }
+  }
+}
+.icon_size {
+  font-size: 2.4rem;
+  cursor: pointer;
+}

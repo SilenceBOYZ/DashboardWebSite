@@ -1,0 +1,42 @@
+.header {
+  width: 100%;
+  background-color: $color-primary-light-1;
+  background-color: transparent;
+  transition: .8s all;
+  &__shopStyle {
+    background-color: transparent;
+  }
+}
+.sticky .header {
+  background-color: $color-primary-light-1;
+  position: fixed;
+  z-index: 1000;
+  & .navbar-top__link {
+    &:link,
+    &:visited {
+      color: #fff;
+    }
+  }
+  & .navbar-top__icon {
+    fill: #fff;
+  }
+  & .navbar-top__icons--order {
+    & .navbar-top__iconBox {
+      fill: #fff;
+    }
+  }
+}
+// -----Video background ------- //
+.background__video {
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0.8;
+
+  &__header {
+    object-fit: cover;
+    object-position: center;
+  }
+}
