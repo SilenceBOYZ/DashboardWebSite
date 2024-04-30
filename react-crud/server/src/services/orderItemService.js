@@ -8,10 +8,10 @@ let getOrderItem = (orderId, userId) => {
       data = {}
       let queryString = `SELECT DISTINCT items.id, items.foodName, items.foodImage, ordersitems.quantity, ordersitems.unitPrice, orders.address, orders.phoneNumber FROM ordersitems, orders, items, users WHERE users.id = orders.userId AND ordersitems.itemId = items.id AND ordersitems.orderId = orders.id AND orders.id = ${orderId} AND users.id = ${userId}`
       let orderItems = await seqeuelize.query(queryString, { type: QueryTypes.SELECT });
-      if(!orderItems.length) {
+      if (!orderItems.length) {
         data.errCode = 1;
         data.errMessage = "This order doesn't exist"
-      }else {
+      } else {
         data.errCode = 0;
         data.errMessage = "Loading order detail successfuly"
         data.dataSelected = orderItems

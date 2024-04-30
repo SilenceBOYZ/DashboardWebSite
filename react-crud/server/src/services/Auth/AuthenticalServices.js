@@ -104,7 +104,7 @@ let getUserbyId = (userId) => {
   return new Promise(async (resolve, reject) => {
     try {
       let data = {}
-      let user = await seqeuelize.query(`SELECT users.id, users.userName, users.email, users.userImage, users.address, users.phoneNumber FROM users WHERE users.id=${userId}`,
+      let user = await seqeuelize.query(`SELECT users.id, users.userName, users.email, users.userImage, users.address, users.phoneNumber, roleId FROM users WHERE users.id=${userId}`,
         { type: QueryTypes.SELECT })
       if (user.length > 0) {
         data.errCode = 0;

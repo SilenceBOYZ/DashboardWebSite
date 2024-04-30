@@ -96,7 +96,7 @@ let getOrderInfor = () => {
   return new Promise(async (resolve, reject) => {
     try {
       let data = {}
-      let queryString = "SELECT orders.id , orders.createdAt, orders.paymentMethod, orders.totalAmount, orders.status FROM `orders`";
+      let queryString = "SELECT orders.id , orders.createdAt, orders.paymentMethod, orders.totalAmount, orders.status FROM `orders` WHERE orders.status = 'ThanhCong'";
       let orders = await seqeuelize.query(queryString, { type: QueryTypes.SELECT });
       if (!orders.length) {
         data.errCode = 1
@@ -117,7 +117,7 @@ let getItemOrders = () => {
   return new Promise(async (resolve, reject) => {
     try {
       let data = {}
-      let queryString = "SELECT items.id, items.foodName, ordersitems.quantity * ordersitems.unitPrice AS totalAmount, ordersitems.createdAt FROM items, ordersitems WHERE ordersitems.itemId = items.id";
+      let queryString = "SELECT items.id, items.foodName, ordersitems.quantity * ordersitems.unitPrice AS totalAmount, ordersitems.createdAt FROM items, ordersitems, orders WHERE ordersitems.itemId = items.id and ordersitems.orderId = orders.id AND orders.status = 'ThanhCong'";
       let orders = await seqeuelize.query(queryString, { type: QueryTypes.SELECT });
       if (!orders.length) {
         data.errCode = 1

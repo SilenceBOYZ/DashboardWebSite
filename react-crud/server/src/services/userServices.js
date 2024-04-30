@@ -107,7 +107,7 @@ let getUserbyId = (userId) => {
 let updateUser = (userId, userData, image) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const { userName, userPassword, email, roleId, address, phoneNumber } = userData;
+      const { userName, userPassword, email, roleId } = userData;
       let data = {};
       let checkUserId = await db.Users.findOne({
         where: {
@@ -115,8 +115,14 @@ let updateUser = (userId, userData, image) => {
         }
       })
       if (checkUserId) {
-        let userPasswordHash = await hashUserPassword(userPassword);
-        let user = await seqeuelize.query(`UPDATE users SET userName = '${userName}', userPassword = '${userPasswordHash}', email = '${email}', userImage = '${image}', roleId = ${roleId} , address = '${address}', phoneNumber = '${phoneNumber}' WHERE id = ${userId}`, { type: QueryTypes.UPDATE })
+        let userPasswordHash;
+        let verify = userPassword === checkUserId.userPassword
+        if (!verify) {
+          userPasswordHash = await hashUserPassword(userPassword);
+        } else {
+          userPasswordHash = userPassword;
+        }
+        let user = await seqeuelize.query(`UPDATE users SET userName = '${userName}', userPassword = '${userPasswordHash}', email = '${email}', userImage = '${image}', roleId = ${roleId} WHERE id = ${userId}`, { type: QueryTypes.UPDATE })
         if (!user?.length) {
           data.errCode = 3;
           data.errMessage = "Failed to update user"
